@@ -1,0 +1,44 @@
+---
+title: "Produire des documents reproductibles avec R Markdown"
+subtitle: "Partager code et documentation"
+author:  
+- "Ronan Ysebaert - UMS RIATE"
+- "École thématique CNRS Sciences de l'information géographique reproductibles - 2021/06/27 (Saint Pierre d'Oléron)"
+date: "Dernière mise à jour: `r Sys.Date()`"
+output:
+  xaringan::moon_reader:
+    self_contained: true
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      highlightSpans: true
+      countIncrementalSlides: false
+      ratio: "16:9"
+    seal: true
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE, crayon.enabled = TRUE)
+knitr::opts_chunk$set(cache = TRUE,
+                      fig.align='center',
+                      message = FALSE,
+                      warning = TRUE)
+
+# install.packages("devtools")
+# devtools::install_github("gadenbuie/countdown")
+# devtools::install_github("mitchelloharawild/icons")
+library(countdown)
+library(icons)
+#download_fontawesome()
+```
+
+
+## Objectifs 
+
+### Éléments théoriques
+- Initiation au literate programming avec R Markdown. 
+- Bonnes pratiques en matière de reproductibilité et documentation de méthodes. 
+- *DoItYourSelf* / *Self gratification*. 
