@@ -947,7 +947,7 @@ class: action
 ###Confirmé 
 - **Titres**. 3 titres de niveau 2 : *Import des données*, *La population dans les environs*, *Session info*. 
 - **Figures **. Incorporez l'image du centre CNRS choisi (dossier fig), adaptez sa taille. 
-- **Table** : Créer une table en Markdown rappelant les sources mobilisées dans l'exercice. 
+- **Table**.  Créer une table rappelant les sources mobilisées dans l'exercice : shorturl.at/kDIK6 
 ]
 
 `r countdown(minutes = 10, seconds = 00, top = 0)`
@@ -963,7 +963,7 @@ class: inverse, center, middle
 
 ## Un code exécutable et lisible
 
-Un code **propre** et **fonctionnel** peut être lu et amélioré par un autre auteur.
+Un code **propre** et **fonctionnel** peut être lu et amélioré par un autre auteur (ou par soi-même, longtemps après).
 
 **Un code fonctionnel**
 - S'assurer au préalable que son code fonctionne sans erreur. 
@@ -1041,7 +1041,6 @@ Respecter l'indentation, la hiérarchie entre les instructions. Une instruction 
 *mf_map(communes30kmautour,col=NA,lwd=2,add=TRUE)
 *mf_layout(title=paste0(round(sum(communespopulation2019$POP_2019),-2)," habitants dans les bourgs des environs"),credits="Ecole Thématique SIG-R, RIATE,2021\n,Source : Eurostat - GISCO, 2021",arrow=FALSE)
 ```
-]
 
 
 ---
@@ -1316,25 +1315,25 @@ mf_layout(title = paste0(round(sum(com$POP_2019),-2),
 
 class: action
 
-# A vous de jouer ! 
-
-
-**Créez un script R (File > New File > R Script) et embellissez le code suivant :**
-
+## A vous de jouer ! 
 
 .pull-left[
 ###Débutant
 
+**Créez un script R (File > New File > R Script) et embellissez le code suivant :**
+
 ```{r, eval = FALSE}
-#Mon bloc de code qui transforme les valeurs du jeu de données d'exemple en km/h 
-#et mètres, réalise la moyenne des deux variables et une régression linéaire
+#Mon bloc de code qui transforme les valeurs du jeu de données
+#d'exemple en km/h et mètres, réalise la moyenne des deux 
+#variables et une régression linéaire
 data(cars)
 cars$speed_kilometreheure<-cars$speed*1.60934  
 cars$dist_metres<-cars$dist*0.3048; summary(cars)
 plot(x=cars$speed_kilometreheure,y=cars$dist_metres, 
-     ylab="Distance nécessaire à l'arrêt (m)",
-     clab="Vitesse (km/h)")
-abline(lm(cars$dist_metres~cars$speed_kilometreheure),lty=2,lwd=1,col="red")
+ylab="Distance nécessaire à l'arrêt (m)",
+clab="Vitesse (km/h)")
+abline(lm(cars$dist_metres~cars$speed_kilometreheure),
+lty=2,lwd=1,col="red")
 ```
 
 ]
@@ -1342,24 +1341,34 @@ abline(lm(cars$dist_metres~cars$speed_kilometreheure),lty=2,lwd=1,col="red")
 .pull-right[
 ###Confirmé
 
-NB / Ce bout de code est compris dans le fichier script.R à la racine du dossier de téléchargement. 
+**Ouvrez le fichier script.R et améliorez cette section de code**
 ```{r, eval = FALSE}
-# Voici mon bloc de code qui fait une carte en cercles proportionnels en utilisant le package mapsf. Les valeurs sont ordonnées afin de faire apparaître les cinq premières valeurs sur la carte en tant que label. 
+# Voici mon bloc de code qui fait une carte en cercles 
+#proportionnels en utilisant le package mapsf. Les valeurs
+#sont ordonnées afin de faire apparaître les cinq premières
+#valeurs sur la carte en tant que label. 
 library(sf); library(mapsf); library(dplyr)
-communespopulation2019<-st_read(dsn="data/oleron.gpkg",layer="com",quiet=TRUE)
-communes30kmautour<-st_read(dsn="data/oleron.gpkg",layer="cnrsBuf",quiet=TRUE)
+communespopulation2019<-st_read(dsn="data/oleron.gpkg",
+layer="com",quiet=TRUE)
+communes30kmautour<-st_read(dsn="data/oleron.gpkg",
+layer="cnrsBuf",quiet=TRUE)
 mf_map(communes30kmautour,col="lightblue",border=NA)
 mf_map(communespopulation2019,col="white",add=TRUE)
 mf_map(communespopulation2019,type="prop",var="POP_2019",
-       leg_pos="topleft",col="grey34",border="white",leg_title="Population 2019")
+leg_pos="topleft",col="grey34",border="white",
+leg_title="Population 2019")
 communespopulation2019<-arrange(communespopulation2019,desc(POP_2019))
-mf_label(x=communespopulation2019[1:5,],var="LAU_NAME",halo=TRUE,overlap=FALSE,lines=FALSE,bg="white")
+mf_label(x=communespopulation2019[1:5,],var="LAU_NAME",
+halo=TRUE,overlap=FALSE,lines=FALSE,bg="white")
 mf_map(communes30kmautour,col=NA,lwd=2,add=TRUE)
-mf_layout(title=paste0(round(sum(communespopulation2019$POP_2019),-2)," habitants dans les bourgs des environs"),
-          credits="Ecole Thématique SIG-R, RIATE,2021\n,Source : Eurostat - GISCO, 2021",arrow=FALSE)
+mf_layout(title=paste0(round(sum(communespopulation2019$POP_2019),-2),
+" habitants dans les bourgs des environs"),
+credits="Ecole Thématique SIG-R, RIATE,2021\n,Source : 
+Eurostat - GISCO, 2021",
+arrow=FALSE)
 ```
 
-NB : Ce code contenu dans le script R (première visualisation).
+
 ]
 
 
@@ -1377,18 +1386,19 @@ class: inverse, center, middle
 
 ## Chunks 
 
-Le code est à placer dans des `chunks` (tronçons), délimités par des triples *backticks*.
+Le code est à placer dans des `chunks` (tronçons), délimités par des triples *backticks* (Code > Insert Chunk dans R Studio)
 
 ````markdown
-`r ''```{r, library_import, warning = FALSE, message = FALSE}
+'''{r, library_import, warning = FALSE, message = FALSE}
 # Import des librairies utiles à l'atelier
 library(sf) # Manipulation de données spatiales
 library(mapsf) # Représentations cartographiques
 library(potential) # Calcul de potentiel
+'''
 ````
 
 - `r` est une option du chunk, qui indique la nature du langage à jouer.
-- `library_import` : Chaque chunk peut être nommé (utile pour s'y retrouver dans un document comprenant de nombreux chunks).
+- `library_import` : Chaque chunk peut être nommé (utile pour un document comprenant de nombreux chunks).
 - `warning = FALSE, message = FALSE` : Chaque chunk est paramétrable (chunk options).
 
 <br> 
@@ -1397,7 +1407,7 @@ library(potential) # Calcul de potentiel
 
 > Préférez plusieurs chunks bien paramétrés et documentés à un seul (long) bloc de code.
 
-> Bien différencier le commentaire de l'instruction du code *(#)* et la documentation du document, qui explique la démarche globale. 
+> Bien différencier le commentaire précédent l'instruction du code *(#)* et ceux rédigés en Markdown, destinés à expliquer la démarche globale d'analyse. 
 
 
 
@@ -1450,7 +1460,7 @@ mf_map(com, type = "prop", var = "POP_2019", leg_pos = "topleft", col = "grey34"
 mf_map(buf, col = NA, lwd = 2, add = TRUE) # Analysis perimeter contour
 mf_map(cnrs, pch = 17, col = "darkred", cex = 2, add = TRUE) # Location CNRS
 mf_label(x = cnrs, var = "centre", halo = TRUE, cex = 0.9, pos = 1, 
-         overlap = FALSE, bg = "white", lines = FALSE, r = 0.15) # Label CNRS
+         overlap = FALSE, lines = FALSE, r = 0.15) # Label CNRS
 mf_layout(title = paste0(round(sum(com$POP_2019),-2), # Layout
                          " habitants dans les bourgs des environs"),
           credits = "Ecole Thématique SIG-R, RIATE, 2021\nSource : Eurostat - GISCO, 2021", arrow = FALSE)
@@ -1488,7 +1498,7 @@ mf_map(com, type = "prop", var = "POP_2019", leg_pos = "topleft", col = "grey34"
 mf_map(buf, col = NA, lwd = 2, add = TRUE) # Analysis perimeter contour
 mf_map(cnrs, pch = 17, col = "darkred", cex = 2, add = TRUE) # Location CNRS
 mf_label(x = cnrs, var = "centre", halo = TRUE, cex = 0.9, pos = 1, 
-         overlap = FALSE, bg = "white", lines = FALSE, r = 0.15) # Label CNRS
+         overlap = FALSE, lines = FALSE, r = 0.15) # Label CNRS
 mf_layout(title = paste0(round(sum(com$POP_2019),-2), # Layout
                          " habitants dans les bourgs des environs"),
           credits = "Ecole Thématique SIG-R, RIATE, 2021\nSource : Eurostat - GISCO, 2021", arrow = FALSE)
@@ -1497,7 +1507,7 @@ mf_layout(title = paste0(round(sum(com$POP_2019),-2), # Layout
 
 ###{r eval = TRUE, echo = FALSE, warning = FALSE} 
 
-Retirer les messages associés au chargement des packages. 
+Retirer le message d'avertissement (lié à une opération SIG de `sf` dans ce cas). 
 
 ```{r eval = TRUE, echo = FALSE, warning = FALSE}
 # Librairies utiles
@@ -1525,7 +1535,7 @@ mf_map(com, type = "prop", var = "POP_2019", leg_pos = "topleft", col = "grey34"
 mf_map(buf, col = NA, lwd = 2, add = TRUE) # Analysis perimeter contour
 mf_map(cnrs, pch = 17, col = "darkred", cex = 2, add = TRUE) # Location CNRS
 mf_label(x = cnrs, var = "centre", halo = TRUE, cex = 0.9, pos = 1, 
-         overlap = FALSE, bg = "white", lines = FALSE, r = 0.15) # Label CNRS
+         overlap = FALSE, lines = FALSE, r = 0.15) # Label CNRS
 mf_layout(title = paste0(round(sum(com$POP_2019),-2), # Layout
                          " habitants dans les bourgs des environs"),
           credits = "Ecole Thématique SIG-R, RIATE, 2021\nSource : Eurostat - GISCO, 2021", arrow = FALSE)
@@ -1563,7 +1573,7 @@ mf_map(com, type = "prop", var = "POP_2019", leg_pos = "topleft", col = "grey34"
 mf_map(buf, col = NA, lwd = 2, add = TRUE) # Analysis perimeter contour
 mf_map(cnrs, pch = 17, col = "darkred", cex = 2, add = TRUE) # Location CNRS
 mf_label(x = cnrs, var = "centre", halo = TRUE, cex = 0.9, pos = 1, 
-         overlap = FALSE, bg = "white", lines = FALSE, r = 0.15) # Label CNRS
+         overlap = FALSE, lines = FALSE, r = 0.15) # Label CNRS
 mf_layout(title = paste0(round(sum(com$POP_2019),-2), # Layout
                          " habitants dans les bourgs des environs"),
           credits = "Ecole Thématique SIG-R, RIATE, 2021\nSource : Eurostat - GISCO, 2021", arrow = FALSE)
@@ -1578,9 +1588,9 @@ mf_layout(title = paste0(round(sum(com$POP_2019),-2), # Layout
 
 Il est d'usage d'incorporer en début de Markdown un chunk qui introduit l'analyse. Il prend généralement en compte :
 
-- Les options de chunk personnalisées avec `knitr::opts_chunk$set()
-- L'import des librairies nécessaires.
-- L'import des données nécessaires à l'application. 
+- Les options de chunk personnalisées avec `knitr::opts_chunk$set()`
+- L'import des librairies requises pour jouer le code.
+- L'import des données associées au document. 
 
 ````markdown
 `r ''```{r, setup, include = FALSE}
@@ -1598,14 +1608,64 @@ library(potential) # Calcul de potentiel
 ---
 
 
-## Afficher des résultats avec knitr
+## Afficher une table avec knitr
 
-Une table mise en forme (8 communes les plus peuplées de l'espace d'étude)
+Une table mise en forme (10 communes les plus peuplées autour du centre CNRS d'Aussois)
 
 ```{r}
+# Sélectionner des colonnes d'intérêt, ordonner sur la population, retirer les géométries
+com <- com[order(com$POP_2019, decreasing = TRUE),]
+com <- com[1:10,c("GISCO_ID", "LAU_NAME", "POP_2019", "AREA_KM2")]
+row.names(com) <- NULL
+com <- st_set_geometry(com, NULL)
+
 # Options de chunk (ensemble du document)
-knitr::kable(head(com, 5), row.names = F, digits = 1)
+knitr::kable(head(com, 10), row.names = F, digits = 1)
 ```
+
+
+---
+
+## Afficher une table avec kableExtra et formattable
+
+Des packages utiles pour des [mises en page stylisées et interactives de tables](https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html). 
+
+.pull-left[
+
+```{r, eval = FALSE}
+library(kableExtra)
+library(formattable)
+
+# Paramétrer le tableau
+com$AREA_KM2 <- color_tile("white", "orange")(com$AREA_KM2)
+com$POP_2019 <- color_bar("lightgreen")(com$POP_2019)
+
+
+# Tableau
+kbl(com, escape = F) %>%
+  kable_paper("hover", full_width = F) %>%
+  column_spec(3, width = "3cm") %>%
+  kable_styling(font_size = 10) %>%
+  add_header_above(c("Communes" = 2, "Population et surface" = 2))
+```
+]
+
+.pull-right[
+```{r, echo = FALSE}
+# Paramétrer le tableau
+com$AREA_KM2 <- color_tile("white", "orange")(com$AREA_KM2)
+com$POP_2019 <- color_bar("lightgreen")(com$POP_2019)
+
+
+# Tableau
+kbl(com, escape = F) %>%
+  kable_paper("hover", full_width = F) %>%
+  column_spec(3, width = "3cm") %>%
+  kable_styling(font_size = 10) %>%
+  add_header_above(c("Communes" = 2, "Population et surface" = 2))
+```
+
+]
 
 
 ---
@@ -1651,8 +1711,8 @@ class: action
 .pull-left[
 ### Débutant
 
-- Insérez votre script précédent dans 3 chunks
-- Paramétrez ces chunks différemment
+- Insérez votre script précédent dans 3 chunks.
+- Paramétrez ces chunks différemment.
 - Rajoutez une `sessionInfo()` en fin de document. 
 
 ]
@@ -1661,7 +1721,7 @@ class: action
 .pull-right[
 ### Confirmé
 
-- Choisissez au minium un centre et une visualisation parmi les 3 proposées. 
+- Choisissez au minium un centre CNRS et une visualisation contenu dans le fichier script.R 
 - Insérez ce script de façon cohérente dans votre R Markdown
 - Rajoutez une `sessionInfo()` en fin de document. 
 ]
@@ -1687,9 +1747,8 @@ class: inverse, center, middle
 
 .pull-left[
 
-- Une [possible analyse](https://sigr.gitpages.huma-num.fr/sigr-reproducible-data/) des données mobilisées dans l'atelier.
-- Le [R Markdown](https://gitlab.huma-num.fr/sigr/sigr-reproducible-data/-/blob/master/index.Rmd) associé 
-- Le [Rappel des sources et la préparation des données](https://sigr.gitpages.huma-num.fr/sigr-reproducible-data/#sources-et-pr%C3%A9paration-des-donn%C3%A9es). 
+- Une [possible analyse](https://sigr2021.github.io/mardown_data/) suivant les principes de programmation lettrée des données mobilisées dans l'atelier.
+- Le [R Markdown](https://github.com/sigr2021/mardown/blob/main/index.Rmd) associé . 
 ]
 
 .pull-right[
@@ -1702,7 +1761,47 @@ class: inverse, center, middle
 
 De comparer les centres de vacances CNRS sur les critères d'analyse proposés ! 
 
-![](fig/output_atelier2.PNG)
+```{r, echo = FALSE}
+# Créer un dataframe vide pour récupérer les données
+df <- data.frame(
+  cnrs = character(),
+  pop = numeric(),
+  night = numeric(),
+  museum = integer (),
+  fort = integer(),
+  viewpoint = integer(),
+  artwork = integer(),
+  monument = integer(),
+  stringsAsFactors = FALSE)
+
+df[1:5, "cnrs"] <- c("aussois", "frejus", "gerberal", "oleron", "plantiers")
+
+
+# Bouche qui itère sur chaque centre du CNRS
+for (i in 1:nrow(df)){
+  
+  # Ouverture du geopackage + somme population rayon 30 km
+  com <- st_read(dsn = paste0("data/", df[i,"cnrs"], ".gpkg"), layer = "com", quiet = TRUE)
+  df[i, "pop"] <- sum(com$POP_2019, na.rm = TRUE)
+  
+  # Ouverture de la grille + moyenne de la pollution lumineuse
+  grid <- st_read(dsn = paste0("data/", df[i,"cnrs"], ".gpkg"), layer = "grid", quiet = TRUE)
+  df[i, "night"] <- mean(grid$World_Atlas_2015, na.rm = TRUE)
+  
+   # Ouverture de la couche point + dénombrement des équipements par catégorie
+  osm <- st_read(dsn = paste0("data/", df[i,"cnrs"], ".gpkg"), layer = "osm", quiet = TRUE)
+  tb <- table(osm$value)
+  df[i, "museum"] <- tb[4]
+  df[i, "fort"] <- tb[2]
+  df[i, "viewpoint"] <- tb[5]
+  df[i, "artwork"] <- tb[1]
+  df[i, "monument"] <- tb[3]
+}
+
+# Affichage des résultats
+knitr::kable(df, row.names = F, digits = 2)
+```
+
 
 .leg-fig[
 *cnrs* (Nom du centre CNRS) et données associées dans un rayon de 30 km *pop* (Population communale 2019, source : Eurostat - GISCO), *night* (Intensité de pollution lumineuse moyenne 2015, source : World Atlas of Artificial Night Sky Brightness V.1.1.), *museum*, *fort*, *viewpoint*, *artwork*, *monument*  (nombre de musées, forts, points de vue, centres d'art et moments en 2021, source : OpenStreetMap et contributeurs).
@@ -1729,5 +1828,5 @@ Credits: contenu et mise en forme s'inspirant de [@oliviergimenez](https://githu
 | `r icons::fontawesome("envelope")` | ronan.ysebaert@cnrs.fr       |
 | `r icons::fontawesome("home")` | [riate.cnrs.fr/](https://riate.cnrs.fr/) |
 | `r icons::fontawesome("gitlab")` | [gitlab.huma-num.fr/rysebaert](https://gitlab.huma-num.fr/rysebaert)                         |
-| `r icons::fontawesome("github")` | [@rysebaert](https://github.com/rysebaert)
-
+| `r icons::fontawesome("github")` | [@rysebaert](https://github.com/rysebaert) |
+| `r icons::fontawesome("file-powerpoint")` | [sigr2021.github.io/mardown/](https://sigr2021.github.io/mardown/) 
