@@ -2,11 +2,12 @@
 title: "Produire des documents reproductibles avec R Markdown"
 subtitle: "Partager code et documentation"
 author:  
-- "Ronan Ysebaert - UMS RIATE"
-- "École thématique CNRS Sciences de l'information géographique reproductibles - 2021/06/27 (Saint Pierre d'Oléron)"
+- "Ronan Ysebaert, Timothée Giraud, Nicolas Lambert - UMS RIATE"
+- "École thématique CNRS Sciences de l'information géographique reproductibles - 2021-06-27 (Saint Pierre d'Oléron)"
 date: "Dernière mise à jour: `r Sys.Date()`"
 output:
   xaringan::moon_reader:
+    self_contained: true
     css: ["default", "css/styles.css", "css/rutgers-tidyverse.css","css/rutgers-fonts_og.css"]
     lib_dir: libs
     nature:
@@ -41,6 +42,7 @@ library(icons)
 ### Éléments théoriques
 - Initiation au literate programming avec R Markdown. 
 - Bonnes pratiques en matière de reproductibilité et documentation de méthodes. 
+- Fournir des ressources de référence pour approfondir l'apprentissage. 
 - *DoItYourSelf* / *Self gratification*. 
 
 
@@ -245,7 +247,7 @@ Plusieurs objectifs :
 ![](fig/yihui_xie.PNG)
 
 .leg-fig[
-Présentation de *Yihui Xie* sur [R Markdown](https://vimeo.com/94181521)
+Présentations de *Yihui Xie* sur [R Markdown](https://vimeo.com/94181521) et ses [origines](http://datascience.la/yihui-xie-the-user-2014-interview/)
 ]
 
 ]
@@ -701,7 +703,7 @@ class: action
 ###Débutant
 **Créez un document R Markdown depuis un modèle**
 - Créer un dossier pour l'atelier.
-- Créez un document R Markdown (file > New File > R Markdown > Document).
+- Créez un document R Markdown (*file > New File > R Markdown > Document*).
 - Enregistrez le Rmd dans ce dossier. 
 - Renseignez les métadonnées du Rmd (nom, date).
 - Knitez le document.
@@ -715,12 +717,11 @@ author: Un auteur qui semble maitriser cette technologie
 date: 27 juin 2021
 output:
   html_document:
-    theme: united 
+*    theme: united 
     toc: true
     number_sections: true
 ---
 ```
-
 
 ]
 
@@ -728,11 +729,10 @@ output:
 ###Confirmé 
 **Préparez un espace de travail reproductible pour l'analyse**
 
-- Téléchargez et décompressez les données associées à l'exercice : shorturl.at/rxBKV 
-- Choisissez un modèle de template R Markdown `rmdformats`.
-- Créez un document R Markdown parmi les *templates* proposés par ce package. 
-- Nommez le .Rmd **index**, et le placer à la racine du dossier précédemment téléchargé. 
-- Renseignez les métadonnées du Rmd (YAML). Ce document sera intitulé "Analyse des CAES du CNRS". 
+- Téléchargez et décompressez les données associées à l'exercice : shorturl.at/rFGKT 
+- Choisissez un modèle de document issu du package `rmdformats`.
+- Nommez le .Rmd **index**, le placer à la racine du dossier précédemment téléchargé. 
+- Renseignez les métadonnées du Rmd (YAML), et jouez avec les [options](https://bookdown.org/yihui/rmarkdown/html-document.html) 
 ]
 
 
@@ -910,20 +910,17 @@ Associer une adresse mail
 
 ## Image
 
-```{r eval=FALSE, tidy=FALSE}
-![](fig/boyard.jpg)
-```
+`![](fig/boyard.jpg)`
+
 
 ![](fig/boyard.jpg)
 ---
 
 ## Limites de Markdown
 
-Il est parfois nécessaire d'introduire du code html pour dimensionner comme on le souhaite des éléments graphiques.
+Il est parfois nécessaire d'introduire du code html pour dimensionner des éléments graphiques sur mesure.
 
-```{r eval=FALSE, tidy=FALSE}
-<p align="center"><img src="fig/boyard.jpg"  height="60%" width="60%"/></p>
-```
+`<p align="center"><img src="fig/boyard.jpg"  height="60%" width="60%"/></p>`
 
 <p align="center"><img src="fig/boyard.jpg"  height="60%" width="60%"/></p>
 
@@ -935,32 +932,22 @@ class: action
 
 ## A vous de jouer ! 
 
+**Enrichissez le .Rmd précédemment généré avec de la syntaxe Markdown** 
+
 .pull-left[
 ### Débutant
-**Titres**
-- Un titre de niveau 2 "Description du jeu de données"
-- Un titre de niveau 2 "Résumé statistique"
-- Un titre de niveau 2 "Représentation graphique"
 
-**Contenu**
-
-Rappeler dans la première partie (syntaxe Markdown) l'origine du jeu de données : *Proposé par McNeil en 1977, ce jeu de données délivre la vitesse d'une voiture et la distance requise pour s'arrêter dans les années 1920*. 
-
-Un élément de texte en gras, un élément en italique. 
+- **Titres**.  Rajouter 3 titres de niveau 2 : *Description du jeu de données*, *Résumé statistique*, *Représentation graphique*
+- **Contenu**. Rappeler dans la première partie (syntaxe Markdown) l'origine du jeu de données : *Proposé par McNeil en 1977, ce jeu de données délivre la vitesse d'une voiture et la distance requise pour s'arrêter dans les années 1920*. 
+- Un élément de texte en gras, un élément en italique. 
 
 ]
 
 .pull-right[
 ###Confirmé 
-**Titres**
-- Un titre de niveau 2 intitulé "Import des données". 
-- Un titre de niveau 2 intitulé "La population dans les environs".
-- Un titre de niveau 2 intitulé "Session info". 
-
-**Figures **
-- Incorporez l'image du centre CNRS choisi (dossier fig), adaptez sa taille. 
-
-**Styles** : Un élément de texte en gras, un autre en italique. 
+- **Titres**. 3 titres de niveau 2 : *Import des données*, *La population dans les environs*, *Session info*. 
+- **Figures **. Incorporez l'image du centre CNRS choisi (dossier fig), adaptez sa taille. 
+- **Table** : Créer une table en Markdown rappelant les sources mobilisées dans l'exercice. 
 ]
 
 `r countdown(minutes = 10, seconds = 00, top = 0)`
@@ -976,7 +963,7 @@ class: inverse, center, middle
 
 ## Un code exécutable et lisible
 
-Un code **propre** et **fonctionnel** peut être lu et amélioré par un développeur autre que l'auteur d'origine.
+Un code **propre** et **fonctionnel** peut être lu et amélioré par un autre auteur.
 
 **Un code fonctionnel**
 - S'assurer au préalable que son code fonctionne sans erreur. 
@@ -987,8 +974,8 @@ Un code [bien écrit](https://dl.leneveu.fr/public/Coder_Proprement.pdf) est :
 - [Bien structuré](https://www.r-bloggers.com/2018/09/r-code-best-practices/).
 - Facile à lire, par soi-même et par les autres (indentation, noms d'objets) 
 - Organisé de façon logique (simplicité). 
-- Explicite et montrent les intentions du développeur (prendre le soin d'expliquer). 
-- A jour (veiller à utiliser la dernière version des packages ou expliquer pourquoi vous utilisez une plus ancienne version). 
+- Explicite et montre les intentions du développeur (commentaires). 
+- A jour (utiliser la dernière version des packages, si ce n'est pas le cas, l'expliquer). 
 
 
 
@@ -1035,6 +1022,28 @@ mf_layout(title=paste0(round(sum(communespopulation2019$POP_2019),-2)," habitant
 ```
 ]
 
+
+---
+
+## Indentation et espace
+
+Respecter l'indentation, la hiérarchie entre les instructions. Une instruction par ligne (de longueur limitée).
+
+```{r, eval = FALSE, echo = TRUE}
+# Voici mon bloc de code qui fait une carte en cercles proportionnels en utilisant le package mapsf. Les valeurs sont ordonnées afin de faire apparaître les cinq premières valeurs sur la carte en tant que label. 
+*library(sf); library(mapsf); library(dplyr)
+*communespopulation2019<-st_read(dsn="data/oleron.gpkg",layer="com",quiet=TRUE)
+*communes30kmautour<-st_read(dsn="data/oleron.gpkg",layer="cnrsBuf",quiet=TRUE)
+*mf_map(communes30kmautour,col="lightblue",border=NA);mf_map(communespopulation2019,col="white",add=TRUE)
+*mf_map(communespopulation2019,type="prop",var="POP_2019",leg_pos="topleft",col="grey34",border="white",leg_title="Population 2019")
+*communespopulation2019<-arrange(communespopulation2019,desc(POP_2019))
+*mf_label(x=communespopulation2019[1:5,],var="LAU_NAME",halo=TRUE,overlap=FALSE,lines=FALSE,bg="white")
+*mf_map(communes30kmautour,col=NA,lwd=2,add=TRUE)
+*mf_layout(title=paste0(round(sum(communespopulation2019$POP_2019),-2)," habitants dans les bourgs des environs"),credits="Ecole Thématique SIG-R, RIATE,2021\n,Source : Eurostat - GISCO, 2021",arrow=FALSE)
+```
+]
+
+
 ---
 
 ## Indentation et espace
@@ -1046,20 +1055,20 @@ Respecter l'indentation, la hiérarchie entre les instructions. Une instruction 
 library(sf)
 library(mapsf)
 library(dplyr)
-communespopulation2019 <- st_read(dsn="data/oleron.gpkg", layer = "com", quiet = TRUE)
-communes30kmautour <- st_read(dsn="data/oleron.gpkg", layer = "cnrsBuf", quiet = TRUE)
-mf_map(communes30kmautour, col="lightblue",border = NA)
+communespopulation2019 <- st_read(dsn = "data/oleron.gpkg", layer = "com", quiet = TRUE)
+communes30kmautour <- st_read(dsn = "data/oleron.gpkg", layer = "cnrsBuf", quiet = TRUE)
+mf_map(communes30kmautour, col = "lightblue", border = NA)
 mf_map(communespopulation2019, col = "white", add = TRUE)
-mf_map(communespopulation2019, type = "prop",var="POP_2019",leg_pos="topleft",
-       col="grey34", border="white", leg_title="Population 2019")
+mf_map(communespopulation2019, type = "prop", var = "POP_2019", leg_pos = "topleft",
+       col = "grey34", border = "white", leg_title = "Population 2019")
 communespopulation2019 <- arrange(communespopulation2019, desc(POP_2019))
-mf_label(x = communespopulation2019[1:5,], var="LAU_NAME", halo=TRUE, overlap=FALSE,
-         lines = FALSE, bg = "white")
+mf_label(x = communespopulation2019[1:5,], var = "LAU_NAME", halo = TRUE, 
+          overlap = FALSE, lines = FALSE, bg = "white")
 mf_map(communes30kmautour, col = NA, lwd = 2, add = TRUE)
-mf_layout(title=paste0(round(sum(communespopulation2019$POP_2019),-2),
-                       " habitants dans les bourgs des environs"),
-          credits = "Ecole Thématique SIG-R, RIATE,2021\n,Source : Eurostat - GISCO, 2021",
-          arrow = FALSE)
+mf_layout(title = paste0(round(sum(communespopulation2019$POP_2019),-2),
+                          " habitants dans les bourgs des environs"),
+           credits = "Ecole Thématique SIG-R, RIATE,2021\n,Source : Eurostat - GISCO, 2021",
+           arrow = FALSE)
 ```
 
 ---
@@ -1069,29 +1078,92 @@ mf_layout(title=paste0(round(sum(communespopulation2019$POP_2019),-2),
 Étape après étape, apporte une indication sur le choix de conception, court et explicite. 
 
 ```{r, eval = FALSE, echo = TRUE}
+*# Voici mon bloc de code qui fait une carte en cercles proportionnels en utilisant le package mapsf. Les valeurs sont ordonnées afin de faire apparaître les cinq premières *valeurs sur la carte en tant que label. 
+library(sf)
+library(mapsf)
+library(dplyr)
+communespopulation2019 <- st_read(dsn = "data/oleron.gpkg", layer = "com", quiet = TRUE)
+communes30kmautour <- st_read(dsn = "data/oleron.gpkg", layer = "cnrsBuf", quiet = TRUE)
+mf_map(communes30kmautour, col = "lightblue", border = NA)
+mf_map(communespopulation2019, col = "white", add = TRUE)
+mf_map(communespopulation2019, type = "prop", var = "POP_2019", leg_pos = "topleft",
+       col = "grey34", border = "white", leg_title = "Population 2019")
+communespopulation2019 <- arrange(communespopulation2019, desc(POP_2019))
+mf_label(x = communespopulation2019[1:5,], var = "LAU_NAME", halo = TRUE, 
+          overlap = FALSE, lines = FALSE, bg = "white")
+mf_map(communes30kmautour, col = NA, lwd = 2, add = TRUE)
+mf_layout(title = paste0(round(sum(communespopulation2019$POP_2019),-2),
+                          " habitants dans les bourgs des environs"),
+           credits = "Ecole Thématique SIG-R, RIATE,2021\n,Source : Eurostat - GISCO, 2021",
+           arrow = FALSE)
+```
+
+
+---
+
+## Organiser ses commentaires
+
+Étape après étape, apporte une indication sur le choix de conception, court et explicite. 
+
+```{r, eval = FALSE, echo = TRUE}
+*# Librairies utilisées
+library(sf)
+library(mapsf)
+library(dplyr)
+
+*# Import des données
+communespopulation2019 <- st_read(dsn = "data/oleron.gpkg", layer = "com", quiet = TRUE)
+communes30kmautour <- st_read(dsn = "data/oleron.gpkg", layer = "cnrsBuf", quiet = TRUE)
+
+*# Cartographie - Population communale
+mf_map(communes30kmautour, col = "lightblue",border = NA)
+mf_map(communespopulation2019, col = "white", add = TRUE)
+mf_map(communespopulation2019, type = "prop", var = "POP_2019",leg_pos = "topleft",
+       col="grey34", border = "white", leg_title = "Population 2019")
+
+*# Ordonner les valeurs les plus élevées et les afficher
+communespopulation2019 <- arrange(communespopulation2019, desc(POP_2019))
+mf_label(x = communespopulation2019[1:5,], var = "LAU_NAME", halo = TRUE,
+         overlap = FALSE, lines = FALSE, bg = "white")
+mf_map(communes30kmautour, col = NA, lwd = 2, add = TRUE)
+
+*# Habillage cartographique
+mf_layout(title = paste0(round(sum(communespopulation2019$POP_2019),-2),
+                       " habitants dans les bourgs des environs"),
+          credits = "Ecole Thématique SIG-R, RIATE,2021\n,Source : Eurostat - GISCO, 2021",
+          arrow = FALSE)
+```
+
+
+---
+## Optimiser les noms d'objets
+
+Des noms prononçables et révélateurs des intentions, plutôt en anglais. Veiller à ne pas utiliser des mots "réservés" par le langage de programmation (plot, sum...)
+
+```{r, eval = FALSE, echo = TRUE}
 # Librairies utilisées
 library(sf)
 library(mapsf)
 library(dplyr)
 
 # Import des données
-communespopulation2019 <- st_read(dsn="data/oleron.gpkg", layer = "com", quiet = TRUE)
-communes30kmautour <- st_read(dsn="data/oleron.gpkg", layer = "cnrsBuf", quiet = TRUE)
+*communespopulation2019 <- st_read(dsn = "data/oleron.gpkg", layer = "com", quiet = TRUE)
+*communes30kmautour <- st_read(dsn = "data/oleron.gpkg", layer = "cnrsBuf", quiet = TRUE)
 
 # Cartographie - Population communale
-mf_map(communes30kmautour, col="lightblue",border = NA)
-mf_map(communespopulation2019, col = "white", add = TRUE)
-mf_map(communespopulation2019, type = "prop",var="POP_2019",leg_pos="topleft",
-       col="grey34", border="white", leg_title="Population 2019")
+*mf_map(communes30kmautour, col = "lightblue",border = NA)
+*mf_map(communespopulation2019, col = "white", add = TRUE)
+*mf_map(communespopulation2019, type = "prop",var="POP_2019",leg_pos = "topleft",
+       col="grey34", border = "white", leg_title = "Population 2019")
 
 # Ordonner les valeurs les plus élevées et les afficher
-communespopulation2019 <- arrange(communespopulation2019, desc(POP_2019))
-mf_label(x = communespopulation2019[1:5,], var="LAU_NAME", halo=TRUE, overlap=FALSE,
-         lines = FALSE, bg = "white")
-mf_map(communes30kmautour, col = NA, lwd = 2, add = TRUE)
+*communespopulation2019 <- arrange(communespopulation2019, desc(POP_2019))
+*mf_label(x = communespopulation2019[1:5,], var = "LAU_NAME", halo = TRUE,
+         overlap = FALSE, lines = FALSE, bg = "white")
+*mf_map(communes30kmautour, col = NA, lwd = 2, add = TRUE)
 
 # Habillage cartographique
-mf_layout(title=paste0(round(sum(communespopulation2019$POP_2019),-2),
+*mf_layout(title = paste0(round(sum(communespopulation2019$POP_2019),-2),
                        " habitants dans les bourgs des environs"),
           credits = "Ecole Thématique SIG-R, RIATE,2021\n,Source : Eurostat - GISCO, 2021",
           arrow = FALSE)
@@ -1102,7 +1174,7 @@ mf_layout(title=paste0(round(sum(communespopulation2019$POP_2019),-2),
 
 ## Optimiser les noms d'objets
 
-Des noms d'objets courts, prononçables et révélateurs (intentions). Veiller à ne pas utiliser des mots "réservés" par le langage de programmation (plot, sum...)
+Des noms prononçables et révélateurs des intentions, plutôt en anglais. Veiller à ne pas utiliser des mots "réservés" par le langage de programmation (plot, sum...)
 
 ```{r, eval = FALSE, echo = TRUE}
 # Librairies utilisées
@@ -1111,23 +1183,58 @@ library(mapsf)
 library(dplyr)
 
 # Import des données
-com <- st_read(dsn="data/oleron.gpkg", layer = "com", quiet = TRUE)
-buf <- st_read(dsn="data/oleron.gpkg", layer = "cnrsBuf", quiet = TRUE)
+*com <- st_read(dsn = "data/oleron.gpkg", layer = "com", quiet = TRUE)
+*buf <- st_read(dsn = "data/oleron.gpkg", layer = "cnrsBuf", quiet = TRUE)
+
+# Cartographie - Population communale
+*mf_map(buf, col="lightblue",border = NA)
+*mf_map(com, col = "white", add = TRUE)
+*mf_map(com, type = "prop",var="POP_2019",leg_pos = "topleft",
+       col = "grey34", border = "white", leg_title = "Population 2019")
+
+# Ordonner les valeurs les plus élevées et les afficher
+*com <- arrange(com, desc(POP_2019)) 
+*mf_label(x = com[1:5,], var="LAU_NAME", halo=TRUE, overlap=FALSE,
+         lines = FALSE, bg = "white")
+*mf_map(com, col = NA, lwd = 2, add = TRUE)
+
+# Habillage cartographique
+*mf_layout(title = paste0(round(sum(com$POP_2019),-2),
+                       " habitants dans les bourgs des environs"),
+          credits = "Ecole Thématique SIG-R, RIATE,2021\n,Source : Eurostat - GISCO, 2021",
+          arrow = FALSE)
+```
+
+---
+
+## Limiter les dépendances
+
+Mieux vaut supprimer l'appel de librairies additionnelles si c'est juste pour une instruction basique. 
+
+```{r, eval = FALSE, echo = TRUE}
+# Librairies utilisées
+library(sf)
+library(mapsf)
+*library(dplyr)
+
+# Import des données
+com <- st_read(dsn = "data/oleron.gpkg", layer = "com", quiet = TRUE)
+buf <- st_read(dsn = "data/oleron.gpkg", layer = "cnrsBuf", quiet = TRUE)
 
 # Cartographie - Population communale
 mf_map(buf, col="lightblue",border = NA)
 mf_map(com, col = "white", add = TRUE)
-mf_map(com, type = "prop",var="POP_2019",leg_pos="topleft",
-       col="grey34", border="white", leg_title="Population 2019")
+mf_map(com, type = "prop",var="POP_2019",leg_pos = "topleft",
+       col = "grey34", border = "white", leg_title = "Population 2019")
 
 # Ordonner les valeurs les plus élevées et les afficher
-com <- arrange(com, desc(POP_2019)) 
+*com <- arrange(com, desc(POP_2019)) 
 mf_label(x = com[1:5,], var="LAU_NAME", halo=TRUE, overlap=FALSE,
          lines = FALSE, bg = "white")
 mf_map(com, col = NA, lwd = 2, add = TRUE)
 
 # Habillage cartographique
-mf_layout(title=paste0(round(sum(com$POP_2019),-2),
+mf_layout(title = paste0(round(sum(com$POP_2019),-2),
                        " habitants dans les bourgs des environs"),
           credits = "Ecole Thématique SIG-R, RIATE,2021\n,Source : Eurostat - GISCO, 2021",
           arrow = FALSE)
@@ -1146,33 +1253,35 @@ library(sf)
 library(mapsf)
 
 # Import des données
-com <- st_read(dsn = paste0("data/oleron.gpkg"), layer = "com", quiet = TRUE)
-buf <- st_read(dsn = paste0("data/oleron.gpkg"), layer = "cnrsBuf", quiet = TRUE)
+com <- st_read(dsn = "data/oleron.gpkg", layer = "com", quiet = TRUE)
+buf <- st_read(dsn = "data/oleron.gpkg", layer = "cnrsBuf", quiet = TRUE)
 
 # Cartographie - Population communale
-mf_map(buf, col = "lightblue", border = NA) # Périmètre d'analyse
-mf_map(com, col = "white", add = TRUE) # Afficher les communes
-mf_map(com, type = "prop", var = "POP_2019", leg_pos = "topleft", col = "grey34",
-       border = "white", leg_title = "Population 2019") # Carte en figurés proportionnels
-mf_map(buf, col = NA, lwd = 2, add = TRUE) # Périmètre d'analyse
+mf_map(buf, col="lightblue",border = NA)
+mf_map(com, col = "white", add = TRUE)
+mf_map(com, type = "prop",var="POP_2019",leg_pos = "topleft",
+       col = "grey34", border = "white", leg_title = "Population 2019")
 
-# Ordonner les valeurs et les afficher
-com <- com[order(com$POP_2019, decreasing = TRUE),] # Au lieu de arrange de dplyr
-mf_label(x = com[1:5,], var = "LAU_NAME", halo = TRUE, overlap = FALSE, 
-         lines = FALSE, bg = "white") # Label des 5 communes les plus peuplées 
+# Ordonner les valeurs les plus élevées et les afficher
+*com <- com[order(com$POP_2019, decreasing = TRUE),] # Au lieu de arrange de dplyr
+mf_label(x = com[1:5,], var="LAU_NAME", halo=TRUE, overlap=FALSE,
+         lines = FALSE, bg = "white")
+mf_map(com, col = NA, lwd = 2, add = TRUE)
 
 # Habillage cartographique
 mf_layout(title = paste0(round(sum(com$POP_2019),-2),
-                         " habitants dans les bourgs des environs"),
-          credits = paste0("Ecole Thématique SIG-R, RIATE, 2021\n",
-                           "Source : Eurostat - GISCO, 2021"), arrow = FALSE)
+                       " habitants dans les bourgs des environs"),
+          credits = "Ecole Thématique SIG-R, RIATE,2021\n,Source : Eurostat - GISCO, 2021",
+          arrow = FALSE)
 ```
+
+
 
 ---
 
-## Un code clair et lisible
+## En anglais ! 
 
-Pour une large diffusion, préférez l'anglais (packages GitHub). 
+Pour une large diffusion, préférez l'anglais (dépôt GitHub). 
 
 ```{r, eval = FALSE, echo = TRUE}
 # Import libraries
