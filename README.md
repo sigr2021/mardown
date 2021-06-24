@@ -1,12 +1,12 @@
-# Ecole thÃ©matique Sciences de l'information gÃ©ographique reproductibles SIGR
+# Ecole thématique Sciences de l'information géographique reproductibles SIGR
 
-[Ecole thÃ©matique CNRS](https://sigr2020.sciencesconf.org/resource/page/id/2), 27 juin au 2 juillet 2021 Ã  Saint-Pierre d'OlÃ©ron. 
+[Ecole thématique CNRS](https://sigr2020.sciencesconf.org/resource/page/id/2), 27 juin au 2 juillet 2021 à Saint-Pierre d'Oléron. 
 
 ## Atelier Outils de la recherche reproductible
 
-Ce prÃ©sentation vise Ã  prÃ©senter les enjeux du litterate programing pour documenter et partager efficacement ses chaines de traitement. Elle est rÃ©alisÃ©e pour l'atelier **Outils de la recherche reproductible**, animÃ© par TimothÃ©e Giraud, Ronan Ysebaert et Nicolas Lambert (UMS RIATE).
+Ce présentation propose une initiation au literate programming avec R Markdown. Elle rappelle les bonnes pratiques en matière de reproductibilité et documentation de méthodes, en fournissant des ressources de référence pour approfondir l'apprentissage. Elle s'articule autour d'exercices, adaptés pour différents niveaux de pratique du literate programming. Elle est réalisée pour l'atelier **Outils de la recherche reproductible**, animé par Timothée Giraud, Nicolas Lambert et Ronan Ysebaert (UMS RIATE).
 
-Elle est accessible [ici](https://sigr.gitpages.huma-num.fr/sigr-reproducible-markdown)
+[Accéder à la présentation](https://sigr2021.github.io/markdown/)
 
 
 
