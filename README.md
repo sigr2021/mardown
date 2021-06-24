@@ -6,7 +6,7 @@
 
 Ce présentation propose une initiation au literate programming avec R Markdown. Elle rappelle les bonnes pratiques en matière de reproductibilité et documentation de méthodes, en fournissant des ressources de référence pour approfondir l'apprentissage. Elle s'articule autour d'exercices, adaptés pour différents niveaux de pratique du literate programming. Elle est réalisée pour l'atelier **Outils de la recherche reproductible**, animé par Timothée Giraud, Nicolas Lambert et Ronan Ysebaert (UMS RIATE).
 
-[Accéder à la présentation](https://sigr2021.github.io/markdown/){target="_blank"}
+[Accéder à la présentation](https://sigr2021.github.io/markdown/)
 
 
 
