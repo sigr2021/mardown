@@ -65,8 +65,6 @@ library(icons)
 
 [Partie 5. Jouer du code dans du R Markdown](#part5)
 
-[Conclusion. Saint-Pierre d'Oléron, un bon choix ?](#part6)
-   
 ]
 
 ---
@@ -364,7 +362,7 @@ Un fichier R Markdown contient 3 parties essentielles.
 
 .pull-left.c[
 
-- Des **métadonnées** associées au document (YAML) : configuration des fichers de sotire (format, css, bibliographie, métadonnées auteur, date de création, etc.) 
+- Des **métadonnées** associées au document (YAML - Yet Another Markup Language) : configuration des fichiers de sortie (format, css, bibliographie, métadonnées auteur, date de création, etc.) 
 - Du **texte**, qui décrit le cheminement de pensée : langage Markdown.
 - Des **blocs de code** structurés, pour rendre reproductible l'analyse. 
 
@@ -375,9 +373,10 @@ Ces trois éléments sont paramétrables pour produire des documents uniques.
 
 .pull-right-c[
 
-![](fig/rmardown.PNG)
+<p align="center"><img src="fig/rmardown.PNG"  height= 300px width = 600px/></p>
+.leg-fig[
 [Source : RStudio](https://rmarkdown.rstudio.com/lesson-1.html)
-
+]
 ]
 
 
@@ -400,7 +399,7 @@ Ces trois éléments sont paramétrables pour produire des documents uniques.
 
 ## Document R Markdown
 
-Le modèle de document R Mardown standard de R Studio. 
+Le modèle de document R Markdown standard de R Studio. 
 
 .pull-left-c[
 <p align="left"><img src="fig/rmadkown_document_input.PNG"  height= 450px width = auto/></p>
@@ -414,7 +413,7 @@ Le modèle de document R Mardown standard de R Studio.
 
 ## Présentations
 
-Le modèle de présentation R Mardown standard de R Studio ([`ioslides_presentation`](https://bookdown.org/yihui/rmarkdown/ioslides-presentation.html)). 
+Le modèle de présentation R Markdown standard de R Studio ([`ioslides_presentation`](https://bookdown.org/yihui/rmarkdown/ioslides-presentation.html)). 
 
 .pull-left-c[
 ![](fig/ioslide.PNG)
@@ -452,7 +451,7 @@ Des packages dédiés à la réalisation de présentations, comme [`xaringan`](h
 
 ## Bookdown
 
-Un [package](https://bookdown.org/yihui/rmarkdown/books.html) dédié à l'écriture de rapports et livres numériques longs. Repose sur la compilation de documents R Mardown.
+Un [package](https://bookdown.org/yihui/rmarkdown/books.html) dédié à l'écriture de rapports et livres numériques longs. Repose sur la compilation de documents R Markdown.
 
 .pull-left-c[
 <p align="center"><img src="fig/cover_bookdown1.png"  height= 350px width = auto/></p>
@@ -471,7 +470,7 @@ Un [package](https://bookdown.org/yihui/rmarkdown/books.html) dédié à l'écri
 
 ## Bookdown
 
-Un [package](https://bookdown.org/yihui/rmarkdown/books.html) dédié à l'écriture de rapports et livres numériques longs. Repose sur la compilation de documents R Mardown.
+Un [package](https://bookdown.org/yihui/rmarkdown/books.html) dédié à l'écriture de rapports et livres numériques longs. Repose sur la compilation de documents R Markdown.
 
 .pull-left-c[
 <p align="center"><img src="fig/cover_bookdown3.png"  height= 350px width = auto/></p>
@@ -482,7 +481,7 @@ Un [package](https://bookdown.org/yihui/rmarkdown/books.html) dédié à l'écri
 ]
 
 .leg-fig[
-[Geocomputation with R (Lovelace, Nowosad, Muenchow, 2019)](https://bookdown.org/yihui/rmarkdown-cookbook/)
+[Geocomputation with R (Lovelace, Nowosad, Muenchow, 2019)](https://geocompr.robinlovelace.net/)
 ]
 
 ---
@@ -547,32 +546,37 @@ class: inverse, center, middle
 
 ## Préparer son espace de travail
 
-RStudio propose d'**organiser son travail en projet** (File > New Project). L’idée principale est de **rassembler tous les fichiers d'un même projet dans un répertoire dédié**.
+RStudio propose d'organiser son travail en **projet** (File > New Project). L’idée principale consiste à réunir tous les fichiers / documents relatifs à un même projet dans un **répertoire dédié**.
 
+.pull-left-c[
 <p align="center"><img src="fig/New_project.png"  width="350"/></p>
+]
 
-- Facilite le travail discontinu
-- Améliore la portabilité de son travail
-- Garantie la reproductibilité de son travail
+.pull-right-c[
+A l'ouverture du projet :
+
+- Le nom du projet est affiché à côté de l'icône projet.
+- Une nouvelle session de R est exécutée.
+- Le répertoire de travail de R est défini comme étant le répertoire du projet.
+- Les objets créés (et sauvegardés dans le fichier .RData) sont chargés en mémoire.
+- Les scripts ouverts lors d'une précédente séance de travail sont automatiquement ouverts. 
+]
+
+Facilite le **travail discontinu**, améliore la **portabilité** et garantie la **reproductibilité** de son travail.
 
 
 ---
 
 ## Préparer son espace de travail
 
-A l'ouverture d'un projet :
-
-- **Le répertoire du projet est considéré par défaut comme le répertoire de travail**
-- Rstudio **restaure à l'identique l'état de la session** lors de sa dernière clôture (option)
-- L’historique des commandes saisies lors des précédentes séances de travail est disponible
-
-<br>
+Disposer d'une organisation de dossiers et de fichiers claire et cohérente facilite l'appropriation du répertoire de travail par d'autres.  
 
 .pull-left-c[
 **Organiser son espace de travail** 
 - Un R Project à la racine.
 - Un dossier dédié au stockage des données.
 - Un dossier qui contient les figures.
+- ...
 ]
 
 .pull-right-c[
@@ -593,7 +597,7 @@ RStudio propose l'import de modèles [R Markdown](https://rmarkdown.rstudio.com/
 
 ## Modèles additionnels
 
-Une multitude ! Avec les packages [`rmdformats`](https://github.com/juba/rmdformats), [`prettydoc`](https://prettydoc.statr.me/themes.html) et [`tufte`](https://github.com/rstudio/tufte) (documents HTML), [`xaringan`](https://github.com/yihui/xaringan) et [`revealjs`](https://github.com/hakimel/reveal.js/) (présentations), [`rticles`](https://github.com/rstudio/rticles)(revues scientifiques), [`pagedown`](https://github.com/rstudio/pagedown) (posters, pages illustrées), [`flexdashboard`](https://pkgs.rstudio.com/flexdashboard/) et [`learnr`](https://rstudio.github.io/learnr/) (dashboards, tutoriels)... 
+Une multitude ! Avec les packages [`rmdformats`](https://github.com/juba/rmdformats), [`prettydoc`](https://prettydoc.statr.me/themes.html) et [`tufte`](https://github.com/rstudio/tufte) (documents HTML), [`xaringan`](https://github.com/yihui/xaringan) et [`revealjs`](https://github.com/hakimel/reveal.js/) (présentations), [`rticles`](https://github.com/rstudio/rticles) (revues scientifiques), [`pagedown`](https://github.com/rstudio/pagedown) (posters, pages illustrées), [`flexdashboard`](https://pkgs.rstudio.com/flexdashboard/) et [`learnr`](https://rstudio.github.io/learnr/) (dashboards, tutoriels)... 
 
 <p align="center"><img src="fig/rmarkdown_templates.PNG"  height="400"/></p>
 
@@ -634,9 +638,11 @@ output:
 
 .pull-left-c[
 
-Le R Markdown est exporté en .HTML (ou .pdf, ou .doc) en réalisant un **`knit`** du .Rmd. Cette action génère un fichier qui :
+Le R Markdown est exporté en .HTML (ou .pdf, ou .doc) en réalisant un **`knit`** du .Rmd.
 
-- Inteprète les métadonnées associées au document (nom d'auteurs, styles graphiques, etc.)
+Cette action : 
+
+- Interprète les métadonnées du document (YAML)
 - Transforme la syntaxe Markdown dans un balisage interprété par le fichier de sortie désiré. 
 - Exécute les `chunks` (lire, afficher, exécuter ou non le code inclut dans le .Rmd).
 
@@ -658,17 +664,21 @@ Réaliser un `Knit` du R Markdown dans R Studio.
 
 .pull-left-c[
 
-Le R Markdown est exporté en .HTML (ou .pdf, ou .doc) en réalisant un **`knit`** du .Rmd. Cette action génère un fichier qui :
+Le R Markdown est exporté en .HTML (ou .pdf, ou .doc) en réalisant un **`knit`** du .Rmd.
 
-- Inteprète les métadonnées associées au document (nom d'auteurs, styles graphiques, etc.)
+Cette action : 
+
+- Interprète les métadonnées du document (YAML)
 - Transforme la syntaxe Markdown dans un balisage interprété par le fichier de sortie désiré. 
 - Exécute les `chunks` (lire, afficher, exécuter ou non le code inclut dans le .Rmd).
+
 
 ]
 
 .pull-right-c[
+
 Ceci...
-<br>
+
 ![](fig/rmadkown_document_input.png)
 ]
 
@@ -678,9 +688,11 @@ Ceci...
 
 .pull-left-c[
 
-Le R Markdown est exporté en .HTML (ou .pdf, ou .doc) en réalisant un **`knit`** du .Rmd. Cette action génère un fichier qui :
+Le R Markdown est exporté en .HTML (ou .pdf, ou .doc) en réalisant un **`knit`** du .Rmd.
 
-- Inteprète les métadonnées associées au document (nom d'auteurs, styles graphiques, etc.)
+Cette action : 
+
+- Interprète les métadonnées du document (YAML)
 - Transforme la syntaxe Markdown dans un balisage interprété par le fichier de sortie désiré. 
 - Exécute les `chunks` (lire, afficher, exécuter ou non le code inclut dans le .Rmd).
 
@@ -688,7 +700,7 @@ Le R Markdown est exporté en .HTML (ou .pdf, ou .doc) en réalisant un **`knit`
 
 .pull-right-c[
 Génère cela 
-<br>
+
 ![](fig/rmardown_out.PNG)
 
 ]
@@ -704,11 +716,11 @@ class: action
 **Créez un document R Markdown depuis un modèle**
 - Créer un dossier pour l'atelier.
 - Créez un document R Markdown (*file > New File > R Markdown > Document*).
-- Enregistrez le Rmd dans ce dossier. 
-- Renseignez les métadonnées du Rmd (nom, date).
+- Enregistrez le fichier .Rmd dans ce dossier. 
+- Renseignez les métadonnées du .Rmd (nom, date).
 - Knitez le document.
 - Testez plusieurs thèmes en modifiant les métadonnées (`cerulean`, `cosmo`, `flatly`, `journal`,
-`lumen`, `paper`, `readable`, `sandstone`,)
+`lumen`, `paper`, `readable`, `sandstone`)
 
 ```yaml
 ---
@@ -729,10 +741,10 @@ output:
 ###Confirmé 
 **Préparez un espace de travail reproductible pour l'analyse**
 
-- Téléchargez et décompressez les données associées à l'exercice : shorturl.at/rFGKT 
+- Téléchargez et décompressez les données associées à l'exercice : [bit.ly/2U0KppL](https://bit.ly/2U0KppL)
 - Choisissez un modèle de document issu du package `rmdformats`.
 - Nommez le .Rmd **index**, le placer à la racine du dossier précédemment téléchargé. 
-- Renseignez les métadonnées du Rmd (YAML), et jouez avec les [options](https://bookdown.org/yihui/rmarkdown/html-document.html) 
+- Renseignez les métadonnées du .Rmd (YAML), et jouez avec les [options](https://bookdown.org/yihui/rmarkdown/html-document.html) 
 ]
 
 
@@ -945,9 +957,9 @@ class: action
 
 .pull-right[
 ###Confirmé 
-- **Titres**. 3 titres de niveau 2 : *Import des données*, *La population dans les environs*, *Session info*. 
+- **Titres**. 4 titres de niveau 2 : *Sources*, *Import des données*, *La population dans les environs*, *Session info*. 
 - **Figures **. Incorporez l'image du centre CNRS choisi (dossier fig), adaptez sa taille. 
-- **Table**.  Créer une table rappelant les sources mobilisées dans l'exercice : shorturl.at/kDIK6 
+- **Table**.  Créez une table dans la première partie (Sources) rappelant les sources mobilisées dans l'exercice (data-sources.png) 
 ]
 
 `r countdown(minutes = 10, seconds = 00, top = 0)`
@@ -963,7 +975,7 @@ class: inverse, center, middle
 
 ## Un code exécutable et lisible
 
-Un code **propre** et **fonctionnel** peut être lu et amélioré par un autre auteur (ou par soi-même, longtemps après).
+Un code **propre** et **fonctionnel** peut être lu et amélioré par un autre auteur (ou par soi-même) longtemps après.
 
 **Un code fonctionnel**
 - S'assurer au préalable que son code fonctionne sans erreur. 
@@ -1407,7 +1419,7 @@ library(potential) # Calcul de potentiel
 
 > Préférez plusieurs chunks bien paramétrés et documentés à un seul (long) bloc de code.
 
-> Bien différencier le commentaire précédent l'instruction du code *(#)* et ceux rédigés en Markdown, destinés à expliquer la démarche globale d'analyse. 
+> Bien différencier les commentaires inclus dans le chunk *(#)*, destinés à décrire succinctement l'exécution du code étape après étape; et ceux rédigés dans le document principal en Markdown, destinés à expliquer l'intention régissant l'ensemble du chunk. 
 
 
 
@@ -1646,12 +1658,16 @@ kbl(com, escape = F) %>%
   kable_paper("hover", full_width = F) %>%
   column_spec(3, width = "3cm") %>%
   kable_styling(font_size = 10) %>%
-  add_header_above(c("Communes" = 2, "Population et surface" = 2))
+  add_header_above(c("Communes" = 2, 
+                     "Population et surface" = 2))
 ```
 ]
 
 .pull-right[
 ```{r, echo = FALSE}
+library(kableExtra)
+library(formattable)
+
 # Paramétrer le tableau
 com$AREA_KM2 <- color_tile("white", "orange")(com$AREA_KM2)
 com$POP_2019 <- color_bar("lightgreen")(com$POP_2019)
@@ -1736,19 +1752,17 @@ class: action
 name: part6
 class: inverse, center, middle
 
-# Saint-Pierre d'Oléron, un bon choix ?
+# La Vieille Perrotine, au top ? 
 
 
 ---
 
 ## Un document html utilisant le template `Robobook`
 
-###Mais quel centre de vacances CNRS choisir ? 
-
 .pull-left[
 
 - Une [possible analyse](https://sigr2021.github.io/mardown_data/) suivant les principes de programmation lettrée des données mobilisées dans l'atelier.
-- Le [R Markdown](https://github.com/sigr2021/mardown/blob/main/index.Rmd) associé . 
+- Le [R Markdown](https://github.com/sigr2021/mardown/blob/main/index.Rmd) associé. 
 ]
 
 .pull-right[
@@ -1798,14 +1812,32 @@ for (i in 1:nrow(df)){
   df[i, "monument"] <- tb[3]
 }
 
-# Affichage des résultats
-knitr::kable(df, row.names = F, digits = 2)
+df[,2:8] <- as.data.frame(sapply(df[,2:8], as.numeric))
+df$night <-  round(df$night, 2)
+df$pop <- round(df$pop, -2)
+
+df$pop <- color_bar("lightgreen")(df$pop)
+df$night <- color_bar("lightblue")(df$night)
+df$museum <- color_tile("white", "orange")(df$museum)
+df$fort <- color_tile("white", "orange")(df$fort)
+df$viewpoint <- color_tile("white", "orange")(df$viewpoint)
+df$artwork <- color_tile("white", "orange")(df$artwork)
+df$monument <- color_tile("white", "orange")(df$monument)
+
+# Tableau
+kbl(df, escape = F) %>%
+  kable_paper("hover", full_width = T) %>%
+  column_spec(8, width = "4cm") %>%
+  kable_styling(font_size = 12) %>%
+  add_header_above(c("Centre" = 1, "Pop. et pollution lumineuse" = 2, "Point OpenStreetMap" = 5))
+
 ```
 
+Dans un rayon de 30 km autour du centre CNRS :
+- *pop*  :Population communale 2019 (source : Eurostat - GISCO).
+- *night* : Intensité de pollution lumineuse moyenne 2015  (source : World Atlas of Artificial Night Sky Brightness V.1.1.)
+- *museum*, *fort*, *viewpoint*, *artwork*, *monument*  : nombre de musées, forts, points de vue, centres d'art et moments en 2021 (source : OpenStreetMap et contributeurs).
 
-.leg-fig[
-*cnrs* (Nom du centre CNRS) et données associées dans un rayon de 30 km *pop* (Population communale 2019, source : Eurostat - GISCO), *night* (Intensité de pollution lumineuse moyenne 2015, source : World Atlas of Artificial Night Sky Brightness V.1.1.), *museum*, *fort*, *viewpoint*, *artwork*, *monument*  (nombre de musées, forts, points de vue, centres d'art et moments en 2021, source : OpenStreetMap et contributeurs).
-]
 --
 
 ---
