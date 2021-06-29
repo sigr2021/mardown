@@ -274,7 +274,7 @@ pdb <- tools:::CRAN_package_db()
 pack <- c("rmarkdown", "knitr", "bookdown", "rticles", "blogdown", "xaringan")
 meta_data <- pdb[, c(1,2, 46, 5, 17, 60, 61, 63)]
 meta_data <- meta_data[meta_data$Package %in% pack,]
-names(meta_data) <- c("Package","Version", "Mainainer", "Import", "AutNB", "RevDepends", "RevImports", "RevSuggest")
+names(meta_data) <- c("Package","Version", "Maintainer", "Import", "AutNB", "RevDepends", "RevImports", "RevSuggest")
 
 # CLEAN THE AUTHOR'S FIELD
 # Function to remove all text between two brackets
@@ -298,7 +298,7 @@ rm_na <- function(x){
 c_dat1 <- seq_len(nrow(meta_data)) %>%
   map_df(~{
     meta_data[.x, ] %>%
-      select(-Package,-Version,-Mainainer) %>%
+      select(-Package,-Version,-Maintainer) %>%
       map_df(~ifelse(is.na(.x), 0, length(str_split(.x, ",")[[1]]))) %>%
       mutate(Package = meta_data$Package[.x])
   }) %>%
